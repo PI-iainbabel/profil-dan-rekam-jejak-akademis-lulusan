@@ -1,44 +1,22 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<body>
-<!-- ===== NAVBAR GLOBAL ===== -->
-<nav style="background: #0f1b33; padding: 12px 24px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; border-bottom: 3px solid #c9a84c; font-family: 'Inter', sans-serif; position: sticky; top: 0; z-index: 1000;">
-    
-    <!-- Logo / Brand -->
-    <a href="https://pi-iainbabel.github.io/psychosophia-hub/" style="display: flex; align-items: center; gap: 10px; color: #fff; font-weight: 700; font-size: 1.1rem; text-decoration: none;">
-        <span style="background: linear-gradient(135deg, #c9a84c, #e8d48b); padding: 4px 10px; border-radius: 8px; color: #0f1b33; font-weight: 800;">Ψ</span>
-        Psychosophia <span style="color: rgba(255,255,255,0.3); font-weight: 300;">·</span> Portal
-    </a>
-
-    <!-- Menu Navigasi -->
-    <div style="display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: center;">
-        <a href="https://pi-iainbabel.github.io/psychosophia-hub/" style="color: rgba(255,255,255,0.75); text-decoration: none; font-size: 0.8rem; font-weight: 500; padding: 4px 12px; border-radius: 20px; transition: all 0.3s;"><i class="fas fa-home"></i> Beranda</a>
-        
-        <a href="https://pi-iainbabel.github.io/profil-dan-rekam-jejak-akademis-lulusan/" style="color: rgba(255,255,255,0.75); text-decoration: none; font-size: 0.8rem; font-weight: 500; padding: 4px 12px; border-radius: 20px; transition: all 0.3s;"><i class="fas fa-user-graduate"></i> Lulusan</a>
-        
-        <a href="https://pi-iainbabel.github.io/sdm/" style="color: rgba(255,255,255,0.75); text-decoration: none; font-size: 0.8rem; font-weight: 500; padding: 4px 12px; border-radius: 20px; transition: all 0.3s;"><i class="fas fa-users"></i> SDM</a>
-        
-        <a href="https://pi-iainbabel.github.io/mahasiswa/" style="color: rgba(255,255,255,0.75); text-decoration: none; font-size: 0.8rem; font-weight: 500; padding: 4px 12px; border-radius: 20px; transition: all 0.3s;"><i class="fas fa-user-graduate"></i> Mahasiswa</a>
-        
-        <a href="https://pi-iainbabel.github.io/spmi/" style="color: rgba(255,255,255,0.75); text-decoration: none; font-size: 0.8rem; font-weight: 500; padding: 4px 12px; border-radius: 20px; transition: all 0.3s;"><i class="fas fa-clipboard-check"></i> SPMI</a>
-        
-        <a href="https://pi-iainbabel.github.io/kurikulum/" style="color: rgba(255,255,255,0.75); text-decoration: none; font-size: 0.8rem; font-weight: 500; padding: 4px 12px; border-radius: 20px; transition: all 0.3s;"><i class="fas fa-book-open"></i> Kurikulum</a>
-        
-        <a href="https://pi-iainbabel.github.io/psychosophia-portfolio/" style="color: rgba(255,255,255,0.75); text-decoration: none; font-size: 0.8rem; font-weight: 500; padding: 4px 12px; border-radius: 20px; transition: all 0.3s;"><i class="fas fa-microchip"></i> Digital Lab</a>
-    </div>
-</nav>
-
-<!-- FontAwesome Icons (jika belum ada) -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-</body>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Visualisasi Profil Lulusan per Angkatan</title>
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Fonts Match with Previous Document -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com">
+    </script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
     <script>
         tailwind.config = {
             theme: {
@@ -46,211 +24,346 @@
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
                         heading: ['Poppins', 'sans-serif'],
+                    },
+                    colors: {
+                        navy: {
+                            50: '#E8EDF8', 100: '#C5D2F0', 200: '#9DB5E8',
+                            300: '#6F95E0', 400: '#4F7FD8', 500: '#2A5CC4',
+                            600: '#1A3F8F', 700: '#122B6A', 800: '#0B1D45',
+                            900: '#060F28', 950: '#030714',
+                        },
+                        gold: '#D4AF37',
                     }
                 }
             }
         }
     </script>
+
     <style>
-        .font-heading { font-family: 'Poppins', sans-serif; }
-        /* Animasi halus saat bar memanjang */
+        body {
+            background-color: #060F28;
+            color: #e2e8f0;
+            font-family: 'Inter', sans-serif;
+        }
+        .glass-nav {
+            background: rgba(11, 29, 69, 0.7);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(79, 143, 255, 0.15);
+        }
+        .btn-nav {
+            color: rgba(255, 255, 255, 0.75);
+            text-decoration: none;
+            font-size: 0.8rem;
+            font-weight: 500;
+            padding: 6px 14px;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .btn-nav:hover {
+            color: #fff;
+            background: rgba(255, 255, 255, 0.08);
+        }
+        .btn-back-home {
+            background: #0f1b33;
+            color: #fff;
+            padding: 8px 20px;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 0.8rem;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 16px rgba(15, 27, 51, 0.15);
+            transition: all 0.3s ease;
+        }
+        .btn-back-home:hover {
+            background: #1a2b4a;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(15, 27, 51, 0.25);
+        }
+        .card-glass {
+            background: rgba(11, 29, 69, 0.4);
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            transition: all 0.3s ease;
+        }
+        .card-glass:hover {
+            border-color: rgba(212, 175, 55, 0.3);
+        }
         .bar-transition {
             transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
         }
+        .stat-card {
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .stat-card:hover {
+            transform: translateY(-6px) scale(1.02);
+        }
+        @media print {
+            .no-print { display: none !important; }
+            body { background: #fff; color: #000; }
+            .card-glass { background: #f1f5f9; border-color: #cbd5e1; }
+        }
     </style>
 </head>
-<body class="bg-slate-50 font-sans text-slate-800 antialiased p-4 md:p-8">
+<body>
 
-    <div class="max-w-5xl mx-auto bg-white rounded-2xl shadow-sm border border-slate-100 p-6 md:p-8">
-        
-        <!-- HEADER SECTION (Match with graduates profile style) -->
-        <div class="flex flex-col md:flex-row md:justify-between md:items-start border-b border-slate-100 pb-6 mb-8">
-            <div>
-                <span class="text-xs font-bold tracking-widest text-emerald-600 uppercase">Analisis Efisiensi Edukasi</span>
-                <h1 class="text-2xl md:text-3xl font-bold font-heading text-emerald-800 mt-1">Profil Mahasiswa & Lulusan per Angkatan</h1>
-                <p class="text-sm text-slate-500 mt-1">Program Studi Psikologi Islam • Data Terintegrasi SIAKAD</p>
+    <!-- ===== NAVBAR ===== -->
+    <nav class="glass-nav fixed top-0 left-0 right-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center gap-3">
+                    <span class="text-gold font-heading font-bold text-lg">Psychosophia</span>
+                    <span class="text-white/30">|</span>
+                    <span class="text-sm text-white/60 hidden sm:inline">Visualisasi Lulusan per Angkatan</span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <!-- Tombol ke Profil Lulusan -->
+                    <a href="https://pi-iainbabel.github.io/profil-dan-rekam-jejak-akademis-lulusan/" class="btn-nav" style="color: #D4AF37; font-weight: 600;">
+                        <i class="fas fa-user-graduate"></i> Profil Lulusan
+                    </a>
+                    <!-- Tombol Kembali ke Home -->
+                    <a href="https://pi-iainbabel.github.io/psychosophia-hub/" class="btn-back-home">
+                        <i class="fas fa-arrow-left"></i> <span class="hidden sm:inline">Kembali ke Home</span>
+                    </a>
+                </div>
             </div>
-            
-            <!-- Live Indicator Badge -->
-            <div class="flex items-center gap-2 bg-emerald-50 text-emerald-700 text-xs font-semibold px-3 py-1.5 rounded-full mt-4 md:mt-0 border border-emerald-100 shadow-sm">
-                <span class="relative flex h-2 w-2">
-                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                    <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+        </div>
+    </nav>
+
+    <!-- ===== HERO ===== -->
+    <section class="pt-24 pb-8 px-4 text-center bg-gradient-to-b from-navy-900 to-navy-950 border-b border-white/5">
+        <div class="max-w-4xl mx-auto">
+            <div class="inline-block px-4 py-1 rounded-full bg-gold/10 border border-gold/20 text-gold text-xs font-semibold tracking-wider mb-4">
+                <i class="fas fa-chart-bar mr-2"></i> ANALISIS EFISIENSI EDUKASI
+            </div>
+            <h1 class="font-heading font-extrabold text-3xl sm:text-4xl text-white leading-tight">
+                Profil Mahasiswa &amp; Lulusan <span class="text-gold">per Angkatan</span>
+            </h1>
+            <p class="mt-3 text-slate-400 max-w-2xl mx-auto text-sm">
+                Program Studi Psikologi Islam · Data Terintegrasi SIAKAD
+            </p>
+            <div class="mt-4 flex flex-wrap justify-center gap-3 text-xs">
+                <span class="px-4 py-1.5 rounded-full bg-navy-800/60 border border-white/5 text-slate-300">
+                    <i class="fas fa-calendar-alt text-gold mr-1.5"></i> 2019–2023
                 </span>
-                <span id="live-clock">Sinkronisasi Sistem Aktif</span>
+                <span class="px-4 py-1.5 rounded-full bg-navy-800/60 border border-white/5 text-slate-300">
+                    <i class="fas fa-users text-gold mr-1.5"></i> 377 Mahasiswa
+                </span>
+                <span class="px-4 py-1.5 rounded-full bg-navy-800/60 border border-white/5 text-slate-300">
+                    <i class="fas fa-graduation-cap text-gold mr-1.5"></i> 117 Lulusan
+                </span>
             </div>
         </div>
+    </section>
 
-        <!-- INFO BOX / CONTEXT (Match with previous layout notice style) -->
-        <div class="bg-amber-50/60 border-l-4 border-amber-500 p-4 rounded-r-xl mb-8 text-sm text-amber-900 leading-relaxed">
-            <strong class="font-semibold text-amber-900 flex items-center gap-1.5 mb-1">
-                💡 Catatan Interpretasi Grafik:
-            </strong>
-            Persentase pada grafik batang di bawah ini menggambarkan proporsi secara riil antara <strong>Lulusan</strong> vs <strong>Mahasiswa Aktif</strong> yang dihitung dari total basis mahasiswa yang diterima pada angkatan tersebut.
-        </div>
-
-        <!-- MAIN GRAPH SECTION -->
-        <div class="space-y-6">
-            
-            <!-- Angkatan 2019 -->
-            <div class="bg-slate-50/50 p-4 rounded-xl border border-slate-100">
-                <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-1 mb-2.5">
-                    <div>
-                        <span class="font-heading font-semibold text-slate-800 text-sm md:text-base">Angkatan 2019 (TS-4)</span>
-                        <span class="text-xs text-slate-500 ml-2 bg-slate-200/60 px-2 py-0.5 rounded-md font-medium">Total: 50 mhs</span>
-                    </div>
-                    <div class="text-xs md:text-sm font-medium text-slate-600">
-                        <span class="text-emerald-700 font-bold bg-emerald-50 px-2 py-0.5 rounded">64% Lulus (32)</span> 
-                        <span class="mx-1">|</span> 
-                        <span class="text-slate-700 font-bold bg-slate-200 px-2 py-0.5 rounded">24% Aktif (12)</span>*
-                    </div>
+    <!-- ===== STATISTIK ===== -->
+    <section class="py-6 px-4 bg-navy-900/50 border-b border-white/5">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+                <div class="stat-card bg-navy-800/30 rounded-xl p-4 text-center border border-white/5">
+                    <div class="text-2xl font-bold text-gold">89%</div>
+                    <div class="text-xs text-slate-400">Tepat Waktu (3,5–6 thn)</div>
                 </div>
-                <!-- Stacked Progress Bar -->
-                <div class="w-full bg-slate-200/70 h-7 rounded-lg overflow-hidden flex shadow-inner border border-slate-200/40">
-                    <div class="bar-transition bg-emerald-600 h-full flex items-center pl-3 text-xs text-white font-semibold tracking-wide" style="width: 0%" data-width="64%">Lulus</div>
-                    <div class="bar-transition bg-slate-400 h-full flex items-center pl-3 text-xs text-white font-semibold tracking-wide" style="width: 0%" data-width="24%">Aktif</div>
+                <div class="stat-card bg-navy-800/30 rounded-xl p-4 text-center border border-white/5">
+                    <div class="text-2xl font-bold text-gold">117</div>
+                    <div class="text-xs text-slate-400">Total Lulusan</div>
                 </div>
-            </div>
-
-            <!-- Angkatan 2020 -->
-            <div class="bg-slate-50/50 p-4 rounded-xl border border-slate-100">
-                <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-1 mb-2.5">
-                    <div>
-                        <span class="font-heading font-semibold text-slate-800 text-sm md:text-base">Angkatan 2020 (TS-3)</span>
-                        <span class="text-xs text-slate-500 ml-2 bg-slate-200/60 px-2 py-0.5 rounded-md font-medium">Total: 58 mhs</span>
-                    </div>
-                    <div class="text-xs md:text-sm font-medium text-slate-600">
-                        <span class="text-emerald-700 font-bold bg-emerald-50 px-2 py-0.5 rounded">69% Lulus (40)</span> 
-                        <span class="mx-1">|</span> 
-                        <span class="text-slate-700 font-bold bg-slate-200 px-2 py-0.5 rounded">21% Aktif (12)</span>*
-                    </div>
+                <div class="stat-card bg-navy-800/30 rounded-xl p-4 text-center border border-white/5">
+                    <div class="text-2xl font-bold text-gold">377</div>
+                    <div class="text-xs text-slate-400">Total Mahasiswa Diterima</div>
                 </div>
-                <div class="w-full bg-slate-200/70 h-7 rounded-lg overflow-hidden flex shadow-inner border border-slate-200/40">
-                    <div class="bar-transition bg-emerald-600 h-full flex items-center pl-3 text-xs text-white font-semibold tracking-wide" style="width: 0%" data-width="69%">Lulus</div>
-                    <div class="bar-transition bg-slate-400 h-full flex items-center pl-3 text-xs text-white font-semibold tracking-wide" style="width: 0%" data-width="21%">Aktif</div>
+                <div class="stat-card bg-navy-800/30 rounded-xl p-4 text-center border border-white/5">
+                    <div class="text-2xl font-bold text-gold">11%</div>
+                    <div class="text-xs text-slate-400">Attrition Rate</div>
                 </div>
-            </div>
-
-            <!-- Angkatan 2021 -->
-            <div class="bg-slate-50/50 p-4 rounded-xl border border-slate-100">
-                <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-1 mb-2.5">
-                    <div>
-                        <span class="font-heading font-semibold text-slate-800 text-sm md:text-base">Angkatan 2021 (TS-2)</span>
-                        <span class="text-xs text-slate-500 ml-2 bg-slate-200/60 px-2 py-0.5 rounded-md font-medium">Total: 88 mhs</span>
-                    </div>
-                    <div class="text-xs md:text-sm font-medium text-slate-600">
-                        <span class="text-emerald-700 font-bold bg-emerald-50 px-2 py-0.5 rounded">49% Lulus (43)</span> 
-                        <span class="mx-1">|</span> 
-                        <span class="text-slate-700 font-bold bg-slate-200 px-2 py-0.5 rounded">51% Aktif (45)</span>
-                    </div>
-                </div>
-                <div class="w-full bg-slate-200/70 h-7 rounded-lg overflow-hidden flex shadow-inner border border-slate-200/40">
-                    <div class="bar-transition bg-emerald-600 h-full flex items-center pl-3 text-xs text-white font-semibold tracking-wide" style="width: 0%" data-width="49%">Lulus</div>
-                    <div class="bar-transition bg-slate-400 h-full flex items-center pl-3 text-xs text-white font-semibold tracking-wide" style="width: 0%" data-width="51%">Aktif</div>
-                </div>
-            </div>
-
-            <!-- Angkatan 2022 -->
-            <div class="bg-slate-50/50 p-4 rounded-xl border border-slate-100">
-                <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-1 mb-2.5">
-                    <div>
-                        <span class="font-heading font-semibold text-slate-800 text-sm md:text-base">Angkatan 2022 (TS-1)</span>
-                        <span class="text-xs text-slate-500 ml-2 bg-slate-200/60 px-2 py-0.5 rounded-md font-medium">Total: 93 mhs</span>
-                    </div>
-                    <div class="text-xs md:text-sm font-medium text-slate-600">
-                        <span class="text-emerald-700 font-bold bg-emerald-50 px-2 py-0.5 rounded">2% Lulus (2)</span> 
-                        <span class="mx-1">|</span> 
-                        <span class="text-slate-700 font-bold bg-slate-200 px-2 py-0.5 rounded">98% Aktif (91)</span>
-                    </div>
-                </div>
-                <div class="w-full bg-slate-200/70 h-7 rounded-lg overflow-hidden flex shadow-inner border border-slate-200/40">
-                    <div class="bar-transition bg-emerald-600 h-full flex items-center pl-2 text-[10px] text-white font-semibold" style="width: 0%" data-width="2%"></div>
-                    <div class="bar-transition bg-slate-400 h-full flex items-center pl-3 text-xs text-white font-semibold tracking-wide" style="width: 0%" data-width="98%">Aktif</div>
-                </div>
-            </div>
-
-            <!-- Angkatan 2023 -->
-            <div class="bg-slate-50/50 p-4 rounded-xl border border-slate-100">
-                <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-1 mb-2.5">
-                    <div>
-                        <span class="font-heading font-semibold text-slate-800 text-sm md:text-base">Angkatan 2023 (TS)</span>
-                        <span class="text-xs text-slate-500 ml-2 bg-slate-200/60 px-2 py-0.5 rounded-md font-medium">Total: 88 mhs</span>
-                    </div>
-                    <div class="text-xs md:text-sm font-medium text-slate-600">
-                        <span class="text-emerald-700 font-bold bg-emerald-50 px-2 py-0.5 rounded">0% Lulus (0)</span> 
-                        <span class="mx-1">|</span> 
-                        <span class="text-slate-700 font-bold bg-slate-200 px-2 py-0.5 rounded">100% Aktif (88)</span>
-                    </div>
-                </div>
-                <div class="w-full bg-slate-200/70 h-7 rounded-lg overflow-hidden flex shadow-inner border border-slate-200/40">
-                    <div class="bar-transition bg-slate-400 h-full flex items-center pl-3 text-xs text-white font-semibold tracking-wide" style="width: 0%" data-width="100%">Aktif (100%)</div>
-                </div>
-            </div>
-
-        </div>
-
-        <!-- Footnote Drop-out (Soft text design) -->
-        <p class="text-xs text-slate-400 mt-4 italic bg-slate-50 p-3 rounded-lg border border-slate-100">
-            * 📌 <strong>Keterangan Attrition Rate:</strong> Selisih angka kumulatif pada angkatan 2019 dan 2020 menunjukkan adanya dinamika kemahasiswaan berupa putus studi/drop out (masing-masing terdata sebanyak 6 mahasiswa).
-        </p>
-
-        <!-- REKAP KELULUSAN TEPAT WAKTU SECTION -->
-        <div class="mt-10 pt-8 border-t border-slate-100">
-            <div class="mb-4">
-                <h2 class="text-lg font-bold font-heading text-emerald-800">📈 Rekapitulasi Masa Studi Kelulusan</h2>
-                <p class="text-xs md:text-sm text-slate-500">Analisis efektivitas bimbingan tugas akhir dari total akumulasi 117 lulusan yang dihasilkan.</p>
-            </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
-                <!-- Tepat Waktu Card -->
-                <div class="bg-emerald-50/40 border border-emerald-100/70 p-5 rounded-xl">
-                    <div class="flex justify-between items-start mb-2">
-                        <span class="text-xs font-bold uppercase tracking-wider text-emerald-700">Masa Studi Aktual</span>
-                        <span class="text-2xl font-bold font-heading text-emerald-800">89%</span>
-                    </div>
-                    <div class="text-sm font-bold text-slate-700 mb-3">Tepat Waktu (3,5 – 6 Tahun): <span class="text-emerald-700">104 Alumni</span></div>
-                    <div class="w-full bg-slate-200/70 h-2.5 rounded-full overflow-hidden">
-                        <div class="bar-transition bg-emerald-600 h-full rounded-full" style="width: 0%" data-width="89%"></div>
-                    </div>
-                </div>
-
-                <!-- Terlambat Card -->
-                <div class="bg-slate-50 border border-slate-200/60 p-5 rounded-xl">
-                    <div class="flex justify-between items-start mb-2">
-                        <span class="text-xs font-bold uppercase tracking-wider text-slate-500">Masa Studi Perpanjangan</span>
-                        <span class="text-2xl font-bold font-heading text-slate-700">11%</span>
-                    </div>
-                    <div class="text-sm font-bold text-slate-700 mb-3">Terlambat (6 – 8 Tahun): <span class="text-slate-600">13 Alumni</span></div>
-                    <div class="w-full bg-slate-200/70 h-2.5 rounded-full overflow-hidden">
-                        <div class="bar-transition bg-slate-400 h-full rounded-full" style="width: 0%" data-width="11%"></div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="mt-6 text-xs md:text-sm text-slate-600 bg-slate-50/50 p-4 rounded-xl border border-slate-100 leading-relaxed">
-                <strong>Kesimpulan Evaluatif:</strong> Berdasarkan sebaran data di atas, efektivitas sistem bimbingan akademik dan monitoring kemajuan studi di tingkat program studi berjalan sangat optimal, dibuktikan dengan dominasi mutlak kelulusan tepat waktu yang mencapai angka <strong>89%</strong>.
             </div>
         </div>
+    </section>
 
-    </div>
+    <!-- ===== MAIN CONTENT ===== -->
+    <section class="px-4 py-8 max-w-5xl mx-auto">
+        <div class="card-glass p-6 sm:p-8 border-gold/10">
 
-    <!-- Script Animasi Interaktif (Sama dengan filosofi file utama) -->
+            <!-- Info Box -->
+            <div class="bg-gold/5 border-l-4 border-gold p-4 rounded-r-xl mb-8 text-sm text-slate-300 leading-relaxed">
+                <strong class="font-semibold text-gold flex items-center gap-1.5 mb-1">
+                    <i class="fas fa-lightbulb"></i> Catatan Interpretasi Grafik:
+                </strong>
+                Persentase pada grafik batang di bawah ini menggambarkan proporsi secara riil antara <strong class="text-white">Lulusan</strong> vs <strong class="text-white">Mahasiswa Aktif</strong> yang dihitung dari total basis mahasiswa yang diterima pada angkatan tersebut.
+            </div>
+
+            <!-- Grafik per Angkatan -->
+            <div class="space-y-6">
+
+                <!-- 2019 -->
+                <div class="bg-navy-800/20 p-4 rounded-xl border border-white/5">
+                    <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-1 mb-2.5">
+                        <div>
+                            <span class="font-heading font-semibold text-white text-sm md:text-base">Angkatan 2019 (TS-4)</span>
+                            <span class="text-xs text-slate-400 ml-2 bg-navy-700/50 px-2 py-0.5 rounded-md font-medium">Total: 50 mhs</span>
+                        </div>
+                        <div class="text-xs md:text-sm font-medium text-slate-300">
+                            <span class="text-gold font-bold bg-gold/10 px-2 py-0.5 rounded">64% Lulus (32)</span>
+                            <span class="mx-1 text-slate-500">|</span>
+                            <span class="text-slate-300 font-bold bg-slate-700/50 px-2 py-0.5 rounded">24% Aktif (12)</span>*
+                        </div>
+                    </div>
+                    <div class="w-full bg-navy-700/50 h-7 rounded-lg overflow-hidden flex shadow-inner border border-white/5">
+                        <div class="bar-transition bg-gold h-full flex items-center pl-3 text-xs text-navy-950 font-semibold tracking-wide" style="width: 0%" data-width="64%">Lulus</div>
+                        <div class="bar-transition bg-slate-500 h-full flex items-center pl-3 text-xs text-white font-semibold tracking-wide" style="width: 0%" data-width="24%">Aktif</div>
+                    </div>
+                </div>
+
+                <!-- 2020 -->
+                <div class="bg-navy-800/20 p-4 rounded-xl border border-white/5">
+                    <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-1 mb-2.5">
+                        <div>
+                            <span class="font-heading font-semibold text-white text-sm md:text-base">Angkatan 2020 (TS-3)</span>
+                            <span class="text-xs text-slate-400 ml-2 bg-navy-700/50 px-2 py-0.5 rounded-md font-medium">Total: 58 mhs</span>
+                        </div>
+                        <div class="text-xs md:text-sm font-medium text-slate-300">
+                            <span class="text-gold font-bold bg-gold/10 px-2 py-0.5 rounded">69% Lulus (40)</span>
+                            <span class="mx-1 text-slate-500">|</span>
+                            <span class="text-slate-300 font-bold bg-slate-700/50 px-2 py-0.5 rounded">21% Aktif (12)</span>*
+                        </div>
+                    </div>
+                    <div class="w-full bg-navy-700/50 h-7 rounded-lg overflow-hidden flex shadow-inner border border-white/5">
+                        <div class="bar-transition bg-gold h-full flex items-center pl-3 text-xs text-navy-950 font-semibold tracking-wide" style="width: 0%" data-width="69%">Lulus</div>
+                        <div class="bar-transition bg-slate-500 h-full flex items-center pl-3 text-xs text-white font-semibold tracking-wide" style="width: 0%" data-width="21%">Aktif</div>
+                    </div>
+                </div>
+
+                <!-- 2021 -->
+                <div class="bg-navy-800/20 p-4 rounded-xl border border-white/5">
+                    <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-1 mb-2.5">
+                        <div>
+                            <span class="font-heading font-semibold text-white text-sm md:text-base">Angkatan 2021 (TS-2)</span>
+                            <span class="text-xs text-slate-400 ml-2 bg-navy-700/50 px-2 py-0.5 rounded-md font-medium">Total: 88 mhs</span>
+                        </div>
+                        <div class="text-xs md:text-sm font-medium text-slate-300">
+                            <span class="text-gold font-bold bg-gold/10 px-2 py-0.5 rounded">49% Lulus (43)</span>
+                            <span class="mx-1 text-slate-500">|</span>
+                            <span class="text-slate-300 font-bold bg-slate-700/50 px-2 py-0.5 rounded">51% Aktif (45)</span>
+                        </div>
+                    </div>
+                    <div class="w-full bg-navy-700/50 h-7 rounded-lg overflow-hidden flex shadow-inner border border-white/5">
+                        <div class="bar-transition bg-gold h-full flex items-center pl-3 text-xs text-navy-950 font-semibold tracking-wide" style="width: 0%" data-width="49%">Lulus</div>
+                        <div class="bar-transition bg-slate-500 h-full flex items-center pl-3 text-xs text-white font-semibold tracking-wide" style="width: 0%" data-width="51%">Aktif</div>
+                    </div>
+                </div>
+
+                <!-- 2022 -->
+                <div class="bg-navy-800/20 p-4 rounded-xl border border-white/5">
+                    <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-1 mb-2.5">
+                        <div>
+                            <span class="font-heading font-semibold text-white text-sm md:text-base">Angkatan 2022 (TS-1)</span>
+                            <span class="text-xs text-slate-400 ml-2 bg-navy-700/50 px-2 py-0.5 rounded-md font-medium">Total: 93 mhs</span>
+                        </div>
+                        <div class="text-xs md:text-sm font-medium text-slate-300">
+                            <span class="text-gold font-bold bg-gold/10 px-2 py-0.5 rounded">2% Lulus (2)</span>
+                            <span class="mx-1 text-slate-500">|</span>
+                            <span class="text-slate-300 font-bold bg-slate-700/50 px-2 py-0.5 rounded">98% Aktif (91)</span>
+                        </div>
+                    </div>
+                    <div class="w-full bg-navy-700/50 h-7 rounded-lg overflow-hidden flex shadow-inner border border-white/5">
+                        <div class="bar-transition bg-gold h-full flex items-center pl-2 text-[10px] text-navy-950 font-semibold" style="width: 0%" data-width="2%"></div>
+                        <div class="bar-transition bg-slate-500 h-full flex items-center pl-3 text-xs text-white font-semibold tracking-wide" style="width: 0%" data-width="98%">Aktif</div>
+                    </div>
+                </div>
+
+                <!-- 2023 -->
+                <div class="bg-navy-800/20 p-4 rounded-xl border border-white/5">
+                    <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-1 mb-2.5">
+                        <div>
+                            <span class="font-heading font-semibold text-white text-sm md:text-base">Angkatan 2023 (TS)</span>
+                            <span class="text-xs text-slate-400 ml-2 bg-navy-700/50 px-2 py-0.5 rounded-md font-medium">Total: 88 mhs</span>
+                        </div>
+                        <div class="text-xs md:text-sm font-medium text-slate-300">
+                            <span class="text-gold font-bold bg-gold/10 px-2 py-0.5 rounded">0% Lulus (0)</span>
+                            <span class="mx-1 text-slate-500">|</span>
+                            <span class="text-slate-300 font-bold bg-slate-700/50 px-2 py-0.5 rounded">100% Aktif (88)</span>
+                        </div>
+                    </div>
+                    <div class="w-full bg-navy-700/50 h-7 rounded-lg overflow-hidden flex shadow-inner border border-white/5">
+                        <div class="bar-transition bg-slate-500 h-full flex items-center pl-3 text-xs text-white font-semibold tracking-wide" style="width: 0%" data-width="100%">Aktif (100%)</div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Footnote -->
+            <p class="text-xs text-slate-400 mt-4 italic bg-navy-800/20 p-3 rounded-lg border border-white/5">
+                * 📌 <strong class="text-slate-300">Keterangan Attrition Rate:</strong> Selisih angka kumulatif pada angkatan 2019 dan 2020 menunjukkan adanya dinamika kemahasiswaan berupa putus studi/drop out (masing-masing terdata sebanyak 6 mahasiswa).
+            </p>
+
+            <!-- REKAP KELULUSAN TEPAT WAKTU -->
+            <div class="mt-10 pt-8 border-t border-white/10">
+                <h2 class="font-heading font-bold text-xl text-white mb-1">📈 Rekapitulasi Masa Studi Kelulusan</h2>
+                <p class="text-xs text-slate-400 mb-4">Analisis efektivitas bimbingan tugas akhir dari total akumulasi 117 lulusan yang dihasilkan.</p>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
+                    <!-- Tepat Waktu -->
+                    <div class="bg-gold/5 border border-gold/20 p-5 rounded-xl">
+                        <div class="flex justify-between items-start mb-2">
+                            <span class="text-xs font-bold uppercase tracking-wider text-gold">Masa Studi Aktual</span>
+                            <span class="text-2xl font-bold font-heading text-gold">89%</span>
+                        </div>
+                        <div class="text-sm font-bold text-slate-300 mb-3">Tepat Waktu (3,5 – 6 Tahun): <span class="text-gold">104 Alumni</span></div>
+                        <div class="w-full bg-navy-700/50 h-2.5 rounded-full overflow-hidden">
+                            <div class="bar-transition bg-gold h-full rounded-full" style="width: 0%" data-width="89%"></div>
+                        </div>
+                    </div>
+
+                    <!-- Terlambat -->
+                    <div class="bg-navy-800/20 border border-white/5 p-5 rounded-xl">
+                        <div class="flex justify-between items-start mb-2">
+                            <span class="text-xs font-bold uppercase tracking-wider text-slate-400">Masa Studi Perpanjangan</span>
+                            <span class="text-2xl font-bold font-heading text-slate-300">11%</span>
+                        </div>
+                        <div class="text-sm font-bold text-slate-400 mb-3">Terlambat (6 – 8 Tahun): <span class="text-slate-300">13 Alumni</span></div>
+                        <div class="w-full bg-navy-700/50 h-2.5 rounded-full overflow-hidden">
+                            <div class="bar-transition bg-slate-500 h-full rounded-full" style="width: 0%" data-width="11%"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-6 text-xs md:text-sm text-slate-300 bg-navy-800/20 p-4 rounded-xl border border-white/5 leading-relaxed">
+                    <strong class="text-gold">Kesimpulan Evaluatif:</strong> Berdasarkan sebaran data di atas, efektivitas sistem bimbingan akademik dan monitoring kemajuan studi di tingkat program studi berjalan sangat optimal, dibuktikan dengan dominasi mutlak kelulusan tepat waktu yang mencapai angka <strong class="text-gold">89%</strong>.
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="border-t border-white/5 py-4 px-4 text-center text-xs text-slate-500">
+        <p>© 2024–2028 Program Studi Psikologi Islam · FDKI · IAIN Syaikh Abdurrahman Siddik Bangka Belitung</p>
+    </footer>
+
+    <!-- ===== SCRIPT ANIMASI ===== -->
     <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            // Animasi Bar Grafik berjalan saat di-load
-            setTimeout(() => {
-                const elements = document.querySelectorAll('.bar-transition');
-                elements.forEach(el => {
-                    const width = el.getAttribute('data-width');
-                    el.style.width = width;
+        document.addEventListener("DOMContentLoaded", function() {
+            // Animasi Bar Grafik
+            setTimeout(function() {
+                document.querySelectorAll('.bar-transition').forEach(function(el) {
+                    var width = el.getAttribute('data-width');
+                    if (width) el.style.width = width;
                 });
             }, 200);
 
-            // Tampilkan Tanggal Otomatis Hari Ini untuk Aspek Real-Time Aktual
-            const opsiWaktu = { year: 'numeric', month: 'long', day: 'numeric' };
-            const hariIni = new Date().toLocaleDateString('id-ID', opsiWaktu);
-            document.getElementById('live-clock').innerText = `Terupdate: ${hariIni}`;
+            // Update jam/live indicator
+            var options = { year: 'numeric', month: 'long', day: 'numeric' };
+            var today = new Date().toLocaleDateString('id-ID', options);
+            var clockEl = document.getElementById('live-clock');
+            if (clockEl) clockEl.innerText = 'Terupdate: ' + today;
         });
     </script>
+
 </body>
 </html>
